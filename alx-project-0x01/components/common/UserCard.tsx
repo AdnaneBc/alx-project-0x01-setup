@@ -1,5 +1,5 @@
 import React from "react";
-import type { UserProps } from "@/interfaces"; // Ensure you're importing the type
+import { UserProps } from "@/interfaces"; // Ensure you're importing the type
 
 const UserCard = ({ user }: { user: UserProps }) => {
   return (
