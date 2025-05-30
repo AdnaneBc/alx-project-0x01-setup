@@ -1,6 +1,7 @@
 import React from "react";
-import type { UserProps } from "@/interfaces";
+import Header from "@/components/layout/Header";
 import UserCard from "@/components/common/UserCard";
+import type { UserProps } from "@/interfaces";
 
 interface UsersPageProps {
   posts: UserProps[];
@@ -8,10 +9,21 @@ interface UsersPageProps {
 
 const Users: React.FC<UsersPageProps> = ({ posts }) => {
   return (
-    <div className="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {posts.map((user) => (
-        <UserCard key={user.id} user={user} />
-      ))}
+    <div className="flex flex-col h-screen">
+      <Header />
+      <main className="p-4">
+        <div className="flex justify-between mb-4">
+          <h1 className="text-2xl font-semibold">User Directory</h1>
+          <button className="bg-blue-700 px-4 py-2 rounded-full text-white">
+            Add User
+          </button>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {posts.map((user: UserProps) => (
+            <UserCard key={user.id} user={user} />
+          ))}
+        </div>
+      </main>
     </div>
   );
 };
