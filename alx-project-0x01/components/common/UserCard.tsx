@@ -1,31 +1,36 @@
 import React from "react";
-import type { UserProps } from "@/interfaces";
+import { UserProps } from "@/interfaces";
 
-interface Props {
-  user: UserProps;
-}
-
-const UserCard: React.FC<Props> = ({ user }) => {
+const UserCard: React.FC<{ user: UserProps }> = ({ user }) => {
   return (
-    <div className="bg-white shadow-md rounded-md p-6 hover:shadow-lg transition">
+    <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition">
       <h2 className="text-xl font-bold text-blue-700">{user.name}</h2>
       <p className="text-gray-500">@{user.username}</p>
-      <p className="mt-2 text-sm text-gray-600">{user.email}</p>
+      <p className="text-sm text-gray-600 mt-1">{user.email}</p>
       <p className="text-sm text-gray-600">📞 {user.phone}</p>
-      <p className="text-sm text-gray-600">🌐 {user.website}</p>
+      <a
+        href={`https://${user.website}`}
+        target="_blank"
+        rel="noreferrer"
+        className="text-sm text-blue-500 underline"
+      >
+        🌐 {user.website}
+      </a>
 
       <div className="mt-4">
-        <h3 className="text-sm font-semibold text-gray-700">Company:</h3>
+        <h3 className="font-semibold text-gray-700 text-sm">Company</h3>
         <p className="text-gray-600">{user.company.name}</p>
-        <p className="text-gray-400 italic">{user.company.catchPhrase}</p>
+        <p className="text-gray-400 text-sm italic">
+          {user.company.catchPhrase}
+        </p>
       </div>
 
       <div className="mt-4">
-        <h3 className="text-sm font-semibold text-gray-700">Address:</h3>
+        <h3 className="font-semibold text-gray-700 text-sm">Address</h3>
         <p className="text-gray-600">
           {user.address.street}, {user.address.suite}, {user.address.city}
         </p>
-        <p className="text-gray-400 text-xs">ZIP: {user.address.zipcode}</p>
+        <p className="text-xs text-gray-400">ZIP: {user.address.zipcode}</p>
       </div>
     </div>
   );
